@@ -1,0 +1,11 @@
+Campaign_ID,TV_Ads,Social_Media_Ads,Google_Ads,Platform,Target_Audience,Region,Season,Discount,Marketing_Budget,Previous_Sales,Sales
+1001,2500,1800,1200,Facebook,Students,North,Summer,10,5500,420,505
+1002,3000,2200,1500,Instagram,Adults,South,Winter,15,6700,510,610
+1003,1800,1600,900,Google,Professionals,East,Spring,8,4300,350,430
+1004,3500,2500,1700,YouTube,Adults,West,Summer,12,7700,620,710
+1005,2200,1900,1300,LinkedIn,Professionals,North,Autumn,5,5400,410,470
+1006,2800,2100,1400,Instagram,Students,South,Spring,18,6300,530,650
+1007,4000,2700,2000,Facebook,Adults,East,Winter,20,8700,710,840
+1008,1600,1400,1000,Google,Seniors,West,Autumn,7,4000,320,390
+1009,3100,2300,1600,YouTube,Professionals,North,Summer,15,7000,590,700
+1010,2600,2000,1100,LinkedIn,Adults,South,Winter,10,5700,460,540

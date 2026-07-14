@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Sales Prediction Dashboard</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- ===========================
+            LEFT PANEL
+    ============================ -->
+
+    <div class="left-panel">
+
+        <h1>
+            <i class="fa-solid fa-chart-line"></i>
+            AI Sales Prediction
+        </h1>
+
+        <p class="subtitle">
+            Predict future sales using Machine Learning and Marketing Analytics.
+        </p>
+
+        <form action="/predict" method="POST">
+
+            <!-- TV Ads -->
+
+            <div class="input-group">
+
+                <label>TV Advertising Budget</label>
+
+                <input
+                    type="number"
+                    name="tv_ads"
+                    placeholder="Enter TV Advertising Budget"
+                    required>
+
+            </div>
+
+            <!-- Social Media -->
+
+            <div class="input-group">
+
+                <label>Social Media Budget</label>
+
+                <input
+                    type="number"
+                    name="social_ads"
+                    placeholder="Enter Social Media Budget"
+                    required>
+
+            </div>
+
+            <!-- Google Ads -->
+
+            <div class="input-group">
+
+                <label>Google Ads Budget</label>
+
+                <input
+                    type="number"
+                    name="google_ads"
+                    placeholder="Enter Google Ads Budget"
+                    required>
+
+            </div>
+
+            <!-- Marketing Budget -->
+
+            <div class="input-group">
+
+                <label>Total Marketing Budget</label>
+
+                <input
+                    type="number"
+                    name="marketing_budget"
+                    placeholder="Enter Marketing Budget"
+                    required>
+
+            </div>
+
+            <!-- Previous Sales -->
+
+            <div class="input-group">
+
+                <label>Previous Sales</label>
+
+                <input
+                    type="number"
+                    name="previous_sales"
+                    placeholder="Previous Sales"
+                    required>
+
+            </div>
+
+            <!-- Discount -->
+
+            <div class="input-group">
+
+                <label>Discount (%)</label>
+
+                <input
+                    type="number"
+                    name="discount"
+                    placeholder="Discount Percentage"
+                    required>
+
+            </div>
+
+            <!-- Platform -->
+
+            <div class="input-group">
+
+                <label>Platform</label>
+
+                <select name="platform" required>
+
+                    <option value="">Select Platform</option>
+
+                    <option>Facebook</option>
+                    <option>Instagram</option>
+                    <option>Google</option>
+                    <option>YouTube</option>
+                    <option>LinkedIn</option>
+
+                </select>
+
+            </div>
+
+            <!-- Target Audience -->
+
+            <div class="input-group">
+
+                <label>Target Audience</label>
+
+                <select name="target" required>
+
+                    <option value="">Select Audience</option>
+
+                    <option>Students</option>
+                    <option>Adults</option>
+                    <option>Professionals</option>
+                    <option>Seniors</option>
+
+                </select>
+
+            </div>
+
+            <!-- Region -->
+
+            <div class="input-group">
+
+                <label>Region</label>
+
+                <select name="region" required>
+
+                    <option value="">Select Region</option>
+
+                    <option>North</option>
+                    <option>South</option>
+                    <option>East</option>
+                    <option>West</option>
+
+                </select>
+
+            </div>
+
+            <!-- Season -->
+
+            <div class="input-group">
+
+                <label>Season</label>
+
+                <select name="season" required>
+
+                    <option value="">Select Season</option>
+
+                    <option>Spring</option>
+                    <option>Summer</option>
+                    <option>Autumn</option>
+                    <option>Winter</option>
+
+                </select>
+
+            </div>
+
+            <!-- Button -->
+
+            <button type="submit">
+
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                Predict Sales
+
+            </button>
+
+        </form>
+
+    </div>
+
+    <!-- ===========================
+            RIGHT PANEL
+    ============================ -->
+
+    <div class="right-panel">
+
+        <div class="card">
+
+            <h2>Dashboard Overview</h2>
+
+            <p>
+
+                This AI-powered dashboard predicts future sales based on
+                advertising investments, customer targeting, and marketing
+                strategies using Machine Learning.
+
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Model Used</h2>
+
+            <ul>
+
+                <li>✔ Random Forest Regressor</li>
+                <li>✔ Linear Regression</li>
+                <li>✔ StandardScaler</li>
+                <li>✔ Label Encoding</li>
+
+            </ul>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Project Features</h2>
+
+            <ul>
+
+                <li>📊 Sales Forecasting</li>
+
+                <li>📈 Business Analytics</li>
+
+                <li>🤖 Machine Learning Prediction</li>
+
+                <li>📉 Marketing Analysis</li>
+
+                <li>💡 Business Insights</li>
+
+                <li>⚡ Fast Prediction</li>
+
+            </ul>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Input Variables</h2>
+
+            <ul>
+
+                <li>TV Advertising</li>
+
+                <li>Social Media Ads</li>
+
+                <li>Google Ads</li>
+
+                <li>Marketing Budget</li>
+
+                <li>Discount</li>
+
+                <li>Previous Sales</li>
+
+                <li>Platform</li>
+
+                <li>Target Audience</li>
+
+                <li>Region</li>
+
+                <li>Season</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

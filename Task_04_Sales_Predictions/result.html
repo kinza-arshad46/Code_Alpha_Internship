@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Prediction Result</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="result-container">
+
+    <h1>
+        <i class="fa-solid fa-chart-column"></i>
+        AI Sales Prediction Dashboard
+    </h1>
+
+    <!-- ================= KPI CARDS ================= -->
+
+    <div class="cards">
+
+        <div class="result-card">
+
+            <i class="fa-solid fa-sack-dollar icon"></i>
+
+            <h3>Predicted Sales</h3>
+
+            <h2>{{ prediction }}</h2>
+
+        </div>
+
+        <div class="result-card">
+
+            <i class="fa-solid fa-chart-line icon"></i>
+
+            <h3>Performance</h3>
+
+            <h2>{{ performance }}</h2>
+
+        </div>
+
+        <div class="result-card">
+
+            <i class="fa-solid fa-wallet icon"></i>
+
+            <h3>Marketing Budget</h3>
+
+            <h2>{{ marketing_budget }}</h2>
+
+        </div>
+
+        <div class="result-card">
+
+            <i class="fa-solid fa-percent icon"></i>
+
+            <h3>Discount</h3>
+
+            <h2>{{ discount }}%</h2>
+
+        </div>
+
+    </div>
+
+    <!-- ================= USER INPUT SUMMARY ================= -->
+
+    <div class="summary-box">
+
+        <h2>
+            <i class="fa-solid fa-clipboard-list"></i>
+            Campaign Summary
+        </h2>
+
+        <table>
+
+            <tr>
+                <td>TV Advertising</td>
+                <td>{{ tv_ads }}</td>
+            </tr>
+
+            <tr>
+                <td>Social Media Ads</td>
+                <td>{{ social_ads }}</td>
+            </tr>
+
+            <tr>
+                <td>Google Ads</td>
+                <td>{{ google_ads }}</td>
+            </tr>
+
+            <tr>
+                <td>Platform</td>
+                <td>{{ platform }}</td>
+            </tr>
+
+            <tr>
+                <td>Target Audience</td>
+                <td>{{ target }}</td>
+            </tr>
+
+            <tr>
+                <td>Region</td>
+                <td>{{ region }}</td>
+            </tr>
+
+            <tr>
+                <td>Season</td>
+                <td>{{ season }}</td>
+            </tr>
+
+            <tr>
+                <td>Previous Sales</td>
+                <td>{{ previous_sales }}</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <!-- ================= BUSINESS INSIGHT ================= -->
+
+    <div class="insight-box">
+
+        <h2>
+
+            <i class="fa-solid fa-lightbulb"></i>
+
+            AI Business Recommendation
+
+        </h2>
+
+        <p>
+
+            {{ suggestion }}
+
+        </p>
+
+    </div>
+
+    <!-- ================= SALES COMPARISON ================= -->
+
+    <div class="comparison-box">
+
+        <h2>
+
+            <i class="fa-solid fa-arrow-trend-up"></i>
+
+            Sales Comparison
+
+        </h2>
+
+        <table>
+
+            <tr>
+
+                <th>Metric</th>
+
+                <th>Value</th>
+
+            </tr>
+
+            <tr>
+
+                <td>Previous Sales</td>
+
+                <td>{{ previous_sales }}</td>
+
+            </tr>
+
+            <tr>
+
+                <td>Predicted Sales</td>
+
+                <td>{{ prediction }}</td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+    <!-- ================= MODEL INFO ================= -->
+
+    <div class="model-box">
+
+        <h2>
+
+            <i class="fa-solid fa-robot"></i>
+
+            Machine Learning Model
+
+        </h2>
+
+        <ul>
+
+            <li>✔ Random Forest Regressor</li>
+
+            <li>✔ StandardScaler</li>
+
+            <li>✔ Label Encoding</li>
+
+            <li>✔ Flask Deployment</li>
+
+            <li>✔ Business Insight Engine</li>
+
+        </ul>
+
+    </div>
+
+    <!-- ================= ACTION BUTTON ================= -->
+
+    <div class="button-box">
+
+        <a href="/">
+
+            <button>
+
+                <i class="fa-solid fa-rotate-left"></i>
+
+                Predict Again
+
+            </button>
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
