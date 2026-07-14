@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Car Price Prediction Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+    <!-- ========================= -->
+    <!-- Navbar -->
+    <!-- ========================= -->
+
+    <nav>
+
+        <h2>🚗 Car Price Prediction Dashboard</h2>
+
+    </nav>
+
+    <!-- ========================= -->
+    <!-- Hero -->
+    <!-- ========================= -->
+
+    <section class="hero">
+
+        <div>
+
+            <h1>Machine Learning Based Car Price Prediction</h1>
+
+            <p>
+
+                Predict car prices using Random Forest Regression trained on
+                thousands of vehicles.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- Statistics -->
+    <!-- ========================= -->
+
+    <section class="cards">
+
+        <div class="card">
+
+            <h3>Total Cars</h3>
+
+            <h2>{{ stats.total_cars }}</h2>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Average Price</h3>
+
+            <h2>{{ stats.avg_price }}</h2>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Highest Price</h3>
+
+            <h2>{{ stats.max_price }}</h2>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Lowest Price</h3>
+
+            <h2>{{ stats.min_price }}</h2>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Average Airbags</h3>
+
+            <h2>{{ stats.avg_airbags }}</h2>
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- Prediction Form -->
+    <!-- ========================= -->
+
+    <section class="prediction">
+
+        <h2>Predict Car Price</h2>
+
+        <form action="/predict" method="POST">
+
+            <div class="grid">
+
+                <select name="manufacturer">
+
+                    {% for item in categories["Manufacturer"] %}
+
+                    <option>{{ item }}</option>
+
+                    {% endfor %}
+
+                </select>
+
+                <select name="model">
+
+                    {% for item in categories["Model"] %}
+
+                    <option>{{ item }}</option>
+
+                    {% endfor %}
+
+                </select>
+
+                <input type="number" name="levy" placeholder="Levy">
+
+                <input type="number" name="year" placeholder="Production Year">
+
+                <select name="category">
+
+                    {% for item in categories["Category"] %}
+
+                    <option>{{ item }}</option>
+
+                    {% endfor %}
+
+                </select>
+
+                <select name="fuel">
+
+                    {% for item in categories["Fuel type"] %}
+
+                    <option>{{ item }}</option>
+
+                    {% endfor %}
+
+                </select>
+
+                <input type="text" name="engine" placeholder="Engine Volume">
+
+                <input type="text" name="mileage" placeholder="Mileage">
+
+                <input type="number" step="0.1" name="cylinders" placeholder="Cylinders">
+
+                <select name="gearbox">
+
+                    {% for item in categories["Gear box type"] %}
+
+                    <option>{{ item }}</option>
+
+                    {% endfor %}
+
+                </select>
+
+                <select name="drive">
+
+                    {% for item in categories["Drive wheels"] %}
+
+                    <option>{{ item }}</option>
+
+                    {% endfor %}
+
+                </select>
+
+                <select name="leather">
+
+                    {% for item in categories["Leather interior"] %}
+
+                    <option>{{ item }}</option>
+
+                    {% endfor %}
+
+                </select>
+
+                <select name="doors">
+
+                    {% for item in categories["Doors"] %}
+
+                    <option>{{ item }}</option>
+
+                    {% endfor %}
+
+                </select>
+
+                <select name="wheel">
+
+                    {% for item in categories["Wheel"] %}
+
+                    <option>{{ item }}</option>
+
+                    {% endfor %}
+
+                </select>
+
+                <select name="color">
+
+                    {% for item in categories["Color"] %}
+
+                    <option>{{ item }}</option>
+
+                    {% endfor %}
+
+                </select>
+
+                <input type="number" name="airbags" placeholder="Airbags">
+
+            </div>
+
+            <button type="submit">
+
+                Predict Price
+
+            </button>
+
+        </form>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- Prediction Result -->
+    <!-- ========================= -->
+
+    {% if prediction %}
+
+    <section class="result">
+
+        <h2>Estimated Car Price</h2>
+
+        <h1>{{ prediction }}</h1>
+
+    </section>
+
+    {% endif %}
+
+    <!-- ========================= -->
+    <!-- Charts -->
+    <!-- ========================= -->
+
+    <section class="charts">
+
+        <h2>Dashboard Analytics</h2>
+
+        <div class="chart-grid">
+
+            <canvas id="priceChart"></canvas>
+
+            <canvas id="fuelChart"></canvas>
+
+            <canvas id="manufacturerChart"></canvas>
+
+            <canvas id="categoryChart"></canvas>
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- Model Performance -->
+    <!-- ========================= -->
+
+    <section class="performance">
+
+        <h2>Model Performance</h2>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Model</th>
+
+                    <th>MAE</th>
+
+                    <th>RMSE</th>
+
+                    <th>R² Score</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>Linear Regression</td>
+
+                    <td>--</td>
+
+                    <td>--</td>
+
+                    <td>--</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Decision Tree</td>
+
+                    <td>--</td>
+
+                    <td>--</td>
+
+                    <td>--</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Random Forest</td>
+
+                    <td>--</td>
+
+                    <td>--</td>
+
+                    <td>--</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- About -->
+    <!-- ========================= -->
+
+    <section class="about">
+
+        <h2>About Project</h2>
+
+        <p>
+
+            This dashboard predicts vehicle prices using a Random Forest
+            Machine Learning model. It includes data preprocessing,
+            feature engineering, visualization, and regression-based
+            prediction.
+
+        </p>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- Footer -->
+    <!-- ========================= -->
+
+    <footer>
+
+        <p>
+
+            Developed using Flask, Pandas, Scikit-learn and Chart.js
+
+        </p>
+
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>
